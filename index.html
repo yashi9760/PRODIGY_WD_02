@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="stopwatch-container">
+        <h2><i class="fa-solid fa-stopwatch"></i> Chronometer</h2>
+        
+        <div class="time-display" id="display">00:00:00.<span class="ms">00</span></div>
+        
+        <div class="controls">
+            <button id="start-btn" class="btn start" title="Start"><i class="fa-solid fa-play"></i></button>
+            <button id="pause-btn" class="btn pause" title="Pause" disabled><i class="fa-solid fa-pause"></i></button>
+            <button id="lap-btn" class="btn lap" title="Record Lap" disabled><i class="fa-solid fa-flag"></i></button>
+            <button id="reset-btn" class="btn reset" title="Reset"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+
+        <div class="lap-box">
+            <h3><i class="fa-solid fa-list-ol"></i> Lap History</h3>
+            <ul id="lap-list">
+                </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
