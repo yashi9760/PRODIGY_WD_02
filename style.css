@@ -1,0 +1,170 @@
+/* --- Global Resets & Typography --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- Container Frame --- */
+.stopwatch-container {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 420px;
+    color: #f8f9fa;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #e0e1dd;
+    margin-bottom: 25px;
+}
+
+h2 i {
+    color: #00e5ff;
+}
+
+/* --- Big Numeric Clock Readout --- */
+.time-display {
+    font-size: 3.2rem;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px 10px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.time-display .ms {
+    font-size: 2rem;
+    color: #00e5ff;
+    font-weight: 400;
+}
+
+/* --- Action Controls Grid --- */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Specific Interactive Color Maps */
+.start { background-color: #00e676; color: #0d1b2a; }
+.start:hover:not(:disabled) { box-shadow: 0 0 15px rgba(0, 230, 118, 0.4); transform: scale(1.05); }
+
+.pause { background-color: #ffb300; color: #0d1b2a; }
+.pause:hover:not(:disabled) { box-shadow: 0 0 15px rgba(255, 179, 0, 0.4); transform: scale(1.05); }
+
+.lap { background-color: #00e5ff; color: #0d1b2a; }
+.lap:hover:not(:disabled) { box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); transform: scale(1.05); }
+
+.reset { background-color: #ff1744; color: #ffffff; }
+.reset:hover:not(:disabled) { box-shadow: 0 0 15px rgba(255, 23, 68, 0.4); transform: scale(1.05); }
+
+.btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* --- Dynamic Lap Log Output --- */
+.lap-box {
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.lap-box h3 {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.lap-box h3 i {
+    font-size: 0.9rem;
+}
+
+#lap-list {
+    list-style: none;
+    max-height: 160px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Mini Scrollbar for tracking overflow box */
+#lap-list::-webkit-scrollbar {
+    width: 4px;
+}
+#lap-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+#lap-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    font-variant-numeric: tabular-nums;
+    animation: slideDown 0.25s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#lap-list li .lap-index {
+    color: #00e5ff;
+    font-weight: 600;
+}
+
+#lap-list li .lap-time {
+    color: #ffffff;
+}
